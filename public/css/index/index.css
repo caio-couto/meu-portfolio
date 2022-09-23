@@ -1,0 +1,197 @@
+*
+{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+html
+{
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+    background-color: #151718;
+}
+body
+{
+    background: radial-gradient(circle at 10px 43px, 
+    rgba(255, 255, 255, 0.2), 
+    rgba(255, 255, 255, 0) 374px), 
+    radial-gradient(circle at 238px -74px, 
+    rgba(9, 125, 234, 0.5), 
+    rgba(255, 255, 255, 0) 405px),
+    radial-gradient(circle at 100% 800px, 
+    rgba(255, 255, 255, 0.2), 
+    rgba(255, 255, 255, 0) 400px),
+    radial-gradient(circle at 168px 621px, 
+    rgba(9, 125, 234, 0.3), 
+    rgba(255, 255, 255, 0) 321px),
+    radial-gradient(circle at 45px 671px, 
+    rgba(255, 255, 255, 0.2), 
+    rgba(255, 255, 255, 0) 314px);
+}
+.l-header
+{
+    background-color: #1e191b87;
+}
+.l-header::after
+{
+    content: '';
+    width: 90%;
+    margin: 0 auto;
+    display: block;
+    border-top: 1px solid rgba(86, 86, 86, 0.356);
+}
+.l-navigation
+{
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    min-height: 100px;
+}
+.c-nav-list
+{
+    display: flex;
+    justify-content: space-between;
+    gap: 60px;
+    align-items: center;
+    margin-bottom: 10px;
+}
+.c-nav-item
+{
+    list-style: none;
+}
+.c-nav-link
+{
+    text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 100;
+    color: white;
+    font-size: 27px;
+    padding: 10px;
+}
+.c-nav-link:hover
+{
+    font-weight: 700; 
+}
+.c-nav-hamburger
+{
+    display: none;
+    cursor: pointer;
+}
+.c-nav-bar
+{
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px auto;
+    transition: all, 0.3s ease-in-out;
+    background-color: white;
+    -webkit-transition: all, 0.3s ease-in-out;
+    -moz-transition: all, 0.3s ease-in-out;
+    -ms-transition: all, 0.3s ease-in-out;
+    -o-transition: all, 0.3s ease-in-out;
+}
+.l-content
+{
+    background-color: #1e191b87;
+}
+.c-section-header
+{
+    font-family: 'Montserrat', sans-serif;
+    display: block;
+    text-align: center;
+    color: white;
+    font-size: 3rem;
+    margin-bottom: 20px;
+}
+.c-section-header-primary
+{
+    font-weight: 100;
+}
+.c-section-header-secondary
+{
+    font-weight: 1000;
+}
+@media only screen and (max-width: 930px)
+{
+    .l-header
+    {
+        z-index: 4;
+        position: sticky;
+        top: 0px;
+    }
+    .l-header--open
+    {
+        background-color: rgb(49, 49, 49);
+    }
+    .l-header::after
+    {
+        display: none;
+    }
+    .l-navigation
+    {
+        width: 100%;
+        padding-right: 30px;
+        min-height: 60px;
+        justify-content: flex-end;
+        align-items: center;
+    }
+    .c-nav-hamburger
+    {
+        display: block;
+    }
+    .c-nav-hamburger.c-nav-hamburger--open .c-nav-bar:nth-child(2)
+    {
+        opacity: 0;
+    }
+    .c-nav-hamburger.c-nav-hamburger--open .c-nav-bar:nth-child(1)
+    {
+        transform: translateY(8px) rotate(45deg);
+        transform: translateY(8px) rotate(45deg);
+        -webkit-transform: translateY(8px) rotate(45deg);
+        -moz-transform: translateY(8px) rotate(45deg);
+        -ms-transform: translateY(8px) rotate(45deg);
+        -o-transform: translateY(8px) rotate(45deg);
+}
+    .c-nav-hamburger.c-nav-hamburger--open .c-nav-bar:nth-child(3)
+    {
+        transform: translateY(-8px) rotate(-45deg);
+        -webkit-transform: translateY(-8px) rotate(-45deg);
+        -moz-transform: translateY(-8px) rotate(-45deg);
+        -ms-transform: translateY(-8px) rotate(-45deg);
+        -o-transform: translateY(-8px) rotate(-45deg);
+}
+    .c-nav-list
+    {
+        position: fixed;
+        left: -100%;
+        top: 50px;
+        gap: 0;
+        flex-direction: column;
+        width: 100%;
+        text-align: center;
+        transition: 0.3s;
+    }
+    .c-nav-item
+    {
+        margin: 15px 0;
+    }
+    .c-nav-list.c-nav-list--open
+    {
+        left: 0;
+        background-color: rgb(49, 49, 49);
+        position: absolute;
+        top: 50px;
+    }
+    .c-nav-list.c-nav-list--open .c-nav-link
+    {
+        font-weight: 700; 
+    }
+    .c-section-header
+    {
+        font-family: 'Montserrat', sans-serif;
+        display: block;
+        text-align: center;
+        color: white;
+        font-size: 1.5rem;
+    }
+}

@@ -1,0 +1,73 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100&display=swap');
+.about
+{
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 50px;
+}
+.profile-container
+{
+    width: 90%;
+    height: 90%;
+}
+.profile-container-header
+{
+    width: 100%;
+    height: 190px;
+}
+.profile-container-body
+{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0 auto;
+    max-width: 800px;
+    height: calc(100% - 200px);
+}
+.body-image
+{
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    outline: 1px solid white;
+    margin-top: 20px;
+    margin-bottom: 30px;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+}
+.body-text
+{
+    text-align: justify;
+    color: #ffff;
+    width: calc(100% - 250px);
+    width: 100%;
+}
+@media only screen and (max-width: 525px)
+{
+    .profile-container-header
+    {
+        height: 100px;
+    }
+    .profile-container-body
+    {
+        flex-direction: column;
+    }
+    .profile-header-text
+    {
+        font-size: 30px;
+    }
+    .body-text
+    {
+        width: 90%;
+    }
+    .body-image
+    {
+        margin-bottom: 20px;
+    }
+}
