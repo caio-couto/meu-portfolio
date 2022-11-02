@@ -55,6 +55,7 @@
 }
 .profile-cv-button
 {
+    border: none;
     cursor: pointer;
     width: 150px;
     height: 50px;
@@ -71,6 +72,7 @@
     -o-border-radius: 8px;
     font-weight: bold;
     font-size: 20px;
+    opacity: 0.7;
     transition: all 0.3s ease-out;
     -webkit-transition: all 0.3s ease-out;
     -moz-transition: all 0.3s ease-out;
@@ -78,9 +80,14 @@
     -o-transition: all 0.3s ease-out;
     user-select: none;
 }
+.profile-cv-button a
+{
+    text-decoration: none;
+    color: white;
+}
 .profile-cv-button:hover
 {
-    background-image: linear-gradient(to left, #2f0cf6, #1B0CF6, #0B34D4, #006DEB, #0B9DD4,);
+    opacity: 1;
 }
 @media only screen and (max-width: 525px)
 {
