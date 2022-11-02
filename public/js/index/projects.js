@@ -7,6 +7,7 @@ const nextBtn = document.querySelector('.c-slide-btn.c-slide-next');
 const prevBtn = document.querySelector('.c-slide-btn.c-slide-prev');
 const slidePagination = document.querySelector('.c-slide-pagination');
 let paginationBtns;
+
 const state = 
 {
     startPoint: 0,
@@ -89,6 +90,7 @@ function onMouseDown(event, index)
 
 function onMouseMove(event)
 {
+    console.log(event);
     state.movment = event.clientX - state.startPoint;
     const position = event.clientX - state.currentPoint;
     translateSlide({position});
@@ -96,6 +98,10 @@ function onMouseMove(event)
 
 function onMouseUp(event)
 {
+    if(event.clientX > event.currentTarget.clientWidth)
+    {
+        console.log('sla');
+    }
     const card = event.currentTarget;
     const cardWidth = card.clientWidth;
     if(state.movment < -cardWidth/3)

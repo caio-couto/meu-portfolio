@@ -40,6 +40,11 @@
     -moz-border-radius: 50%;
     -ms-border-radius: 50%;
     -o-border-radius: 50%;
+    overflow: hidden;
+}
+.body-image img
+{
+    width: 200px;
 }
 .body-text
 {
@@ -47,6 +52,35 @@
     color: #ffff;
     width: calc(100% - 250px);
     width: 100%;
+}
+.profile-cv-button
+{
+    cursor: pointer;
+    width: 150px;
+    height: 50px;
+    color: white;
+    background-image: linear-gradient(to left, #1B0CF6, #0B34D4, #006DEB, #0B9DD4, #0CF4F6);
+    margin: 20px auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    -ms-border-radius: 8px;
+    -o-border-radius: 8px;
+    font-weight: bold;
+    font-size: 20px;
+    transition: all 0.3s ease-out;
+    -webkit-transition: all 0.3s ease-out;
+    -moz-transition: all 0.3s ease-out;
+    -ms-transition: all 0.3s ease-out;
+    -o-transition: all 0.3s ease-out;
+    user-select: none;
+}
+.profile-cv-button:hover
+{
+    background-image: linear-gradient(to left, #2f0cf6, #1B0CF6, #0B34D4, #006DEB, #0B9DD4,);
 }
 @media only screen and (max-width: 525px)
 {

@@ -85,7 +85,7 @@ if (window.matchMedia("(max-width: 930px)").matches != true)
         visibilityElement(codeLines[4].brakets);
         await waitForMs(700);
         await typeSentense('name: ', codeLines[1], 100, '#70beef');
-        await typeSentense("'caio couto'", codeLines[1], 100, '#ba7f55');
+        await typeSentense("'caio c couto'", codeLines[1], 100, '#ba7f55');
         await typeSentense(',', codeLines[1], 100, '#a6a6a6');
         visibilityElement(codeLines[1].cursor);
         visibilityElement(codeLines[2].element);
@@ -99,7 +99,7 @@ if (window.matchMedia("(max-width: 930px)").matches != true)
         visibilityElement(codeLines[3].cursor);
         await waitForMs(700);
         await typeSentense('gitHub: ', codeLines[3], 100, '#70beef',)
-        await typeSentense("'https://github.com/caiocouto181'", codeLines[3], 100, '#ba7f55', true, 'https://github.com/caiocouto181');
+        await typeSentense("'https://github.com/caio-couto'", codeLines[3], 100, '#ba7f55', true, 'https://github.com/caio-couto');
     });
 }
 
