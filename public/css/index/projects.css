@@ -118,6 +118,13 @@
     z-index: 1;
     color: white;
     background: transparent;
+    padding: 5px;
+    background-color: #1c1b1b6d;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
 }
 .c-slide-btn.c-slide-prev
 {

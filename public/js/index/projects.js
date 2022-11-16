@@ -90,7 +90,6 @@ function onMouseDown(event, index)
 
 function onMouseMove(event)
 {
-    console.log(event);
     state.movment = event.clientX - state.startPoint;
     const position = event.clientX - state.currentPoint;
     translateSlide({position});
