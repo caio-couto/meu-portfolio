@@ -92,7 +92,7 @@ if (window.matchMedia("(max-width: 930px)").matches != true)
         visibilityElement(codeLines[2].cursor);
         await waitForMs(700);
         await typeSentense('linkedin: ', codeLines[2], 100, '#70beef',)
-        await typeSentense("'https://www.linkedin.com/in/caio...'", codeLines[2], 100, '#ba7f55', true, 'https://www.linkedin.com/in/caio-cavalcante-do-couto-759aa2224/');
+        await typeSentense("'https://www.linkedin.com/in/caio...'", codeLines[2], 100, '#ba7f55', true, 'https://www.linkedin.com/in/caio-couto-759aa2224');
         await typeSentense(',', codeLines[2], 100, '#a6a6a6');
         visibilityElement(codeLines[2].cursor);
         visibilityElement(codeLines[3].element);
