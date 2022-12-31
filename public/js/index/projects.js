@@ -201,4 +201,80 @@ function initSlider()
     setVisibleSlide({index: 0});
 }
 
+function githubCard()
+{
+    let repo = {};
+
+    fetch('https://api.github.com/users/caio-couto/repos')
+    .then((resp) => resp.json())
+    .then((data) =>
+    {
+        repo = data[0];
+        populateCard(repo)
+    });
+
+    function populateCard(repository)
+    {
+        const title = document.querySelector('.c-github-rep-title');
+        const description = document.querySelector('.c-github-description');
+        const avatar = document.querySelector('.c-github-image');
+        const updated = document.querySelector('.c-github-updated');
+
+        title.innerHTML = repository.name;
+        title.setAttribute('href', repository.html_url)
+        description.innerHTML = repository.description? repository.description : 'Ainda não há descrição';
+        updated.innerHTML = dateFormat(repository.pushed_at);
+        const userImage = document.createElement('img');
+        userImage.classList.add('c-github-avatar');
+        userImage.setAttribute('src', repository.owner.avatar_url);
+        avatar.appendChild(userImage);
+    }
+
+    function dateFormat(rawDate)
+    {
+        const date = new Date(rawDate);
+        const formatedCurrentDate = new Intl.DateTimeFormat('pt-BR').format(new Date());
+        const formatedDate = new Intl.DateTimeFormat('pt-BR').format(date); 
+        let convertDate = 'sem data';
+        if(formatedDate.split('/')[1] < formatedCurrentDate.split('/')[1])
+        {
+            const month = parseInt(formatedCurrentDate.split('/')[1]) - parseInt(formatedDate.split('/')[1]);
+            if(month == 1)
+            {
+                convertDate = '1 mês atrás';
+            }
+            else
+            {
+                convertDate = `${month} mêses atrás`;
+            }
+        }
+        else if(parseInt(formatedCurrentDate.split('/')[0]) - parseInt(formatedDate.split('/')[0]) > 7)
+        {
+            
+            const week = parseInt(parseInt((formatedCurrentDate.split('/')[0]) - parseInt(formatedDate.split('/')[0])) / 7);
+            convertDate = week == 1? `1 semana atrás` : `${week} semanas atrás`;
+        }
+        else
+        {
+            const day = parseInt(formatedCurrentDate.split('/')[0]) - parseInt(formatedDate.split('/')[0]);
+            if(day == 0)
+            {
+                convertDate = 'hoje';
+            }
+            else if(day == 1)
+            {
+                convertDate = '1 dia atrás';
+            }
+            else
+            {
+                convertDate = `${day} dias atrás`;
+            }
+        }
+
+        return convertDate;
+    }
+}
+
+githubCard();
+
 initSlider();

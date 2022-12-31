@@ -1,3 +1,15 @@
+@keyframes pulseAnimation
+{
+    100%
+    {
+        opacity: 0;
+        transform: scale(2);
+        -webkit-transform: scale(2);
+        -moz-transform: scale(2);
+        -ms-transform: scale(2);
+        -o-transform: scale(2);
+}
+}
 .projects
 {
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
@@ -150,6 +162,127 @@
 {
     color: #0B9DD4;
 }
+.l-github
+{
+    margin: 40px auto 0px auto;
+    max-width: 800px;
+    width: 90%;
+    height: 150px;
+    border-radius: 10px;
+    background-image: linear-gradient(to left, #1B0CF6, #0B34D4, #006DEB, #0B9DD4, #0CF4F6);
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+    padding: 3px;
+}
+.l-github .c-github-content
+{
+    padding: 10px;
+    width: 100%;
+    height: 100%;
+    background-color: #18191a;
+    border-radius: 8px;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    -ms-border-radius: 8px;
+    -o-border-radius: 8px;
+}
+.l-github .c-github-wrapper
+{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.l-github .c-github-image
+{
+    width: 100px;
+    height: 100px;
+}
+.l-github .c-github-avatar
+{
+    width: 100%;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+}
+.l-github .c-github-info
+{
+    width: calc(100% - 100px);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.l-github .c-github-title
+{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding-left: 10px;
+}
+.l-github .c-github-text
+{
+    color: white;
+    font-weight: bold;
+    font-size: 24px;
+}
+.l-github .c-github-rep-title
+{
+    color: white;
+    text-decoration: underline;
+    cursor: pointer;
+}
+.l-github .c-github-pulse
+{
+    margin: 5px 5px 0px 0px;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background-color: rgb(0, 255, 4);
+    position: relative;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+}
+.l-github .c-github-pulse span
+{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: inherit;
+    opacity: 0.8;
+    border-radius: inherit;
+    -webkit-border-radius: inherit;
+    -moz-border-radius: inherit;
+    -ms-border-radius: inherit;
+    -o-border-radius: inherit;
+    animation: pulseAnimation 4s ease-out infinite;
+    -webkit-animation: pulseAnimation 4s ease-out infinite;
+    animation-delay: calc(1s * var(--i));
+}
+.l-github .c-github-updated
+{
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+}
+.l-github .c-github-description
+{
+    width: 100%;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    -webkit-box-orient: vertical; 
+    text-overflow: ellipsis;
+    padding: 0px 10px 0px 10px;
+    color: white;
+}
 @media only screen and (max-width: 510px)
 {
     .c-slide-card
@@ -200,5 +333,37 @@
     .c-slide-btn
     {
         display: none;
+    }
+    .l-github
+    {
+        width: 90%;
+        height: 90px;
+        padding: 2px;
+    }
+    .l-github .c-github-image
+    {
+        width: 60px;
+        height: 60px;
+    }
+    .l-github .c-github-info
+    {
+        width: calc(100% - 60px);
+    }
+    .l-github .c-github-text
+    {
+        font-size: 16px;
+    }
+    .l-github .c-github-pulse
+    {
+        width: 12px;
+        height: 12px;
+    }
+    .l-github .c-github-updated
+    {
+        font-size: 12px;
+    }
+    .l-github .c-github-description
+    {
+        font-size: 10px;
     }
 }
