@@ -275,6 +275,5 @@ function githubCard()
     }
 }
 
-githubCard();
 
 initSlider();
