@@ -209,7 +209,7 @@ function githubCard()
     .then((resp) => resp.json())
     .then((data) =>
     {
-        repo = data[0];
+        repo = data[9];
         populateCard(repo)
     });
 
