@@ -43,6 +43,7 @@
     width: 90%;
     display: flex;
     margin: 5px auto;
+    padding: 10px 0px;
     align-items: center;
     justify-content: space-evenly;
     text-align: justify;

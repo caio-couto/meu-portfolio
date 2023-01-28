@@ -203,77 +203,105 @@ function initSlider()
 
 function githubCard()
 {
-    let repo = {};
+    let repo = [];
 
     fetch('https://api.github.com/users/caio-couto/repos')
     .then((resp) => resp.json())
     .then((data) =>
     {
-        repo = data[9];
-        populateCard(repo)
+        repo = data;
+        populateCard(getLatestProject(repo));
     });
 
-    function populateCard(repository)
+    function getLatestProject(repository)
+    {
+        let latestProject = {};
+
+        for(let i = 0; i < repo.length; i++) 
+        {
+            const project = repository[i];
+
+            if(latestProject.pushed_at)
+            {
+                const currentDate = new Date(latestProject.pushed_at).getTime();
+                const newDate = new Date(project.pushed_at).getTime();
+                if(currentDate < newDate)
+                {
+                    latestProject = project;
+                }
+            }
+            else
+            {
+                latestProject = project;
+            }
+        }
+
+        return latestProject;
+    }
+
+    function populateCard(project)
     {
         const title = document.querySelector('.c-github-rep-title');
         const description = document.querySelector('.c-github-description');
         const avatar = document.querySelector('.c-github-image');
         const updated = document.querySelector('.c-github-updated');
 
-        title.innerHTML = repository.name;
-        title.setAttribute('href', repository.html_url)
-        description.innerHTML = repository.description? repository.description : 'Ainda não há descrição';
-        updated.innerHTML = dateFormat(repository.pushed_at);
+        title.innerHTML = project.name;
+        title.setAttribute('href', project.html_url)
+        description.innerHTML = project.description? project.description : 'Ainda não há descrição';
+        updated.innerHTML = timeDifference(new Date(), new Date(project.pushed_at));
         const userImage = document.createElement('img');
         userImage.classList.add('c-github-avatar');
-        userImage.setAttribute('src', repository.owner.avatar_url);
+        userImage.setAttribute('src', project.owner.avatar_url);
         avatar.appendChild(userImage);
     }
 
-    function dateFormat(rawDate)
+    function timeDifference(current, previous) 
     {
-        const date = new Date(rawDate);
-        const formatedCurrentDate = new Intl.DateTimeFormat('pt-BR').format(new Date());
-        const formatedDate = new Intl.DateTimeFormat('pt-BR').format(date); 
-        let convertDate = 'sem data';
-        if(formatedDate.split('/')[1] < formatedCurrentDate.split('/')[1])
+    
+        const msPerMinute = 60 * 1000;
+        const msPerHour = msPerMinute * 60;
+        const msPerDay = msPerHour * 24;
+        const msPerMonth = msPerDay * 30;
+        const msPerYear = msPerDay * 365;
+    
+        const elapsed = current - previous;
+    
+        if (elapsed < msPerMinute) 
         {
-            const month = parseInt(formatedCurrentDate.split('/')[1]) - parseInt(formatedDate.split('/')[1]);
-            if(month == 1)
+            if(elapsed/1000 < 30)
             {
-                convertDate = '1 mês atrás';
+                return 'Atualizado agora';
             }
-            else
-            {
-                convertDate = `${month} mêses atrás`;
-            }
+            return `Atualizado há ${Math.round(elapsed/1000)} segundos`;   
         }
-        else if(parseInt(formatedCurrentDate.split('/')[0]) - parseInt(formatedDate.split('/')[0]) > 7)
+    
+        else if (elapsed < msPerHour) 
         {
-            
-            const week = parseInt(parseInt((formatedCurrentDate.split('/')[0]) - parseInt(formatedDate.split('/')[0])) / 7);
-            convertDate = week == 1? `1 semana atrás` : `${week} semanas atrás`;
+            return `Atualizado há ${Math.round(elapsed/msPerMinute)} minutos`;   
         }
-        else
+    
+        else if (elapsed < msPerDay ) 
         {
-            const day = parseInt(formatedCurrentDate.split('/')[0]) - parseInt(formatedDate.split('/')[0]);
-            if(day == 0)
-            {
-                convertDate = 'hoje';
-            }
-            else if(day == 1)
-            {
-                convertDate = '1 dia atrás';
-            }
-            else
-            {
-                convertDate = `${day} dias atrás`;
-            }
+            return `Atualizado há ${Math.round(elapsed/msPerHour )} horas`;   
         }
-
-        return convertDate;
+    
+        else if (elapsed < msPerMonth) 
+        {
+            return `Atualizado há ${Math.round(elapsed/msPerDay)} dias`;   
+        }
+    
+        else if (elapsed < msPerYear) 
+        {
+            return `Atualizado há ${Math.round(elapsed/msPerMonth)} meses`;   
+        }
+    
+        else 
+        {
+            return `Atualizado há ${Math.round(elapsed/msPerYear)} anos`;   
+        }
     }
 }
 
-
+githubCard();
 initSlider();

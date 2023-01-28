@@ -79,7 +79,6 @@
     align-items: flex-end;
     color: white;
     font-size: 40PX;
-    height: 42x;
 }
 .c-code__sentece--hidden
 {
@@ -165,7 +164,7 @@
 {
     width: 100%;
 }
-@media only screen and (max-width: 930px)
+@media only screen and (max-width: 1040px)
 {
     .l-home
     {
