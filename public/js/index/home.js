@@ -1,6 +1,6 @@
 class code
 {
-    constructor(code, typingSpeed = 110, typingBreaks = 1000)
+    constructor(code, typingSpeed = 100, typingBreaks = 800)
     {
         this.code = code;
         this.typingSpeed = typingSpeed;

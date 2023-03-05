@@ -55,12 +55,17 @@
     max-width: 600px;
     width: 60vw;
 }
+.c-slide-card:not(.active) .c-slide-content
+{
+    transform: scale(0.95);
+}
 .c-slide-card:hover .c-slide-description
 {
     opacity: 1;
 }
 .c-slide-content
 {
+    box-sizing: content-box;
     border-radius: 10px;
     cursor: grab;
     position: relative;
@@ -68,6 +73,7 @@
     -moz-border-radius: 10px;
     -ms-border-radius: 10px;
     -o-border-radius: 10px;
+    transition: transform 0.5s ease-out;
 }
 .c-slide-image
 {
@@ -124,6 +130,7 @@
 }
 .c-slide-btn
 {
+    display: none;
     cursor: pointer;
     font-size: 36px;
     position: absolute;
@@ -142,9 +149,17 @@
 {
     left: 10px;
 }
+.c-slide-btn.c-slide-prev.active
+{
+    display: block;
+}
 .c-slide-btn.c-slide-next
 {
     right: 10px;
+}
+.c-slide-btn.c-slide-next.active
+{
+    display: block;
 }
 .c-slide-pagination
 {
@@ -152,7 +167,7 @@
 }
 .c-slide-pagination-btn
 {
-    color: white;
+    color: rgb(135, 135, 135);
     background: transparent;
     cursor: pointer;
     font-size: 1rem;
@@ -332,10 +347,14 @@
         -ms-border-radius: 0px;
         -o-border-radius: 0px;
     }
-    .c-slide-btn
+    .c-slide-btn.c-slide-prev.active, .c-slide-btn.c-slide-next.active
     {
         display: none;
     }
+    .c-slide-card:not(.active) .c-slide-content
+{
+    transform: scale(1);
+}
     .c-slide-pagination
     {
         margin: 0 auto auto;

@@ -7,6 +7,8 @@ const nextBtn = document.querySelector('.c-slide-btn.c-slide-next');
 const prevBtn = document.querySelector('.c-slide-btn.c-slide-prev');
 const slidePagination = document.querySelector('.c-slide-pagination');
 let paginationBtns;
+let isLeave = false;
+let isMobile = false;
 
 const state = 
 {
@@ -22,6 +24,27 @@ function translateSlide({position})
     state.lastPositon = position;
     slideList.style.transform = `translateX(${position}px)`;
 };
+
+function setChevronVisibility()
+{
+    if(state.currentSlideIndex == 0)
+    {
+        prevBtn.classList.remove('active');
+    }
+    else
+    {
+        prevBtn.classList.add('active');
+    }
+
+    if(state.currentSlideIndex == slideCards.length - 1)
+    {
+        nextBtn.classList.remove('active');
+    }
+    else
+    {
+        nextBtn.classList.add('active');
+    }
+}
 
 function getCenterPosition({index})
 {
@@ -44,6 +67,13 @@ function setVisibleSlide({index})
     slideList.style.transition = 'transform 0.5s';
     translateSlide({position: position});
     activePaginationButton({index: index});
+    setChevronVisibility();
+    if(isMobile === false)
+    {
+        const currentCard = slideCards[index];
+        currentCard.classList.add('active');
+        slideCards.forEach((card) => card != currentCard && card.classList.remove('active'));
+    }
 };
 
 function nextSlide()
@@ -63,7 +93,7 @@ function createPaginationBtn()
         const paginationBtn = document.createElement('div');
         paginationBtn.classList.add('c-slide-pagination-btn');
         paginationBtn.classList.add('bx');
-        paginationBtn.classList.add('bx-circle');
+        paginationBtn.classList.add('bxs-circle');
         slidePagination.append(paginationBtn);
     })
 }
@@ -78,6 +108,21 @@ function activePaginationButton({index})
     paginationBtn.classList.add('c-slide-pagination-btn--active');
 }
 
+function onMouseOut(event)
+{
+    const card = event.currentTarget;
+    if(event.target == card)
+    {
+        isLeave = false;
+    }
+    else
+    {
+        isLeave = true;
+        card.removeEventListener('mousemove', onMouseMove);
+        card.removeEventListener('mouseout', onMouseOut);
+    }
+}
+
 function onMouseDown(event, index)
 {
     const card = event.currentTarget;
@@ -86,6 +131,7 @@ function onMouseDown(event, index)
     state.currentSlideIndex = index;
     slideList.style.transition = 'none';
     card.addEventListener('mousemove', onMouseMove);
+    card.addEventListener('mouseout', onMouseOut);
 };
 
 function onMouseMove(event)
@@ -97,17 +143,13 @@ function onMouseMove(event)
 
 function onMouseUp(event)
 {
-    if(event.clientX > event.currentTarget.clientWidth)
-    {
-        console.log('sla');
-    }
     const card = event.currentTarget;
     const cardWidth = card.clientWidth;
-    if(state.movment < -cardWidth/3)
+    if(state.movment < -cardWidth/7)
     {
         nextSlide();
     }
-    else if(state.movment > cardWidth/3)
+    else if(state.movment > cardWidth/7)
     {
         prevSlide();
     }
@@ -115,7 +157,7 @@ function onMouseUp(event)
     {
         setVisibleSlide({index: state.currentSlideIndex});
     };
-    card.removeEventListener('mousemove', onMouseMove);
+    card.removeEventListener('mousemove', onMouseMove); 
 };
 
 function onTouchStart(event, index)
@@ -161,6 +203,7 @@ function onPaginationBtnClick(index)
 
 function setListeners()
 {
+    document.body.removeEventListener('mousemove', onMouseMove);
     paginationBtns = document.querySelectorAll('.c-slide-pagination-btn');
     paginationBtns.forEach((paginationBtn, index) =>
     {
@@ -171,8 +214,9 @@ function setListeners()
     });
     slideCards.forEach((card, index) =>
     {
-        if( !/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) 
+        if(!/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) 
         {
+
             card.addEventListener('dragstart', (event) =>
             {
                 event.preventDefault();
@@ -181,14 +225,17 @@ function setListeners()
             {
                 onMouseDown(event, index);
             });
-            card.addEventListener('mouseup', onMouseUp);
+            card.addEventListener('mouseup', onMouseUp, {capture: true});
         }
-        card.addEventListener('touchstart', (event) =>
+        else
         {
-            onTouchStart(event, index);
-        });
-        card.addEventListener('touchend', onTouchEnd);
-
+            isMobile = true;
+            card.addEventListener('touchstart', (event) =>
+            {
+                onTouchStart(event, index);
+            });
+            card.addEventListener('touchend', onTouchEnd);
+        }
     });
     nextBtn.addEventListener('click', nextSlide);
     prevBtn.addEventListener('click', prevSlide);
