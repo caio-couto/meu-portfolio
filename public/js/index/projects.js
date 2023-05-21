@@ -50,7 +50,9 @@ function setChevronVisibility()
 function getCenterPosition({index})
 {
     const card = slideCards[index];
-    const margin = (slideWrapper.clientWidth - card.clientWidth)/2;
+    const cardWidth = card.clientWidth;
+    const windowWidth = slideWrapper.clientWidth;
+    const margin = (windowWidth - cardWidth)/2;
     const position = margin - (index * cardWidth);
     return position;
 };
