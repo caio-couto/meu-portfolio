@@ -8,10 +8,13 @@
         -moz-transform: scale(2.5);
         -ms-transform: scale(2.5);
         -o-transform: scale(2.5);
-}
+    }
 }
 .projects
 {
+    position: relative;
+    max-width: 1800px;
+    margin: 0 auto;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     width: 100%;
     display: flex;
@@ -77,6 +80,7 @@
 }
 .c-slide-image
 {
+    object-fit: cover;
     width: 100%;
     border-radius: 10px;
     -webkit-border-radius: 10px;
@@ -130,6 +134,7 @@
 }
 .c-slide-btn
 {
+    border: 2px solid rgba(255, 255, 255, 0.2);
     display: none;
     cursor: pointer;
     font-size: 36px;
@@ -138,7 +143,7 @@
     color: white;
     background: transparent;
     padding: 5px;
-    background-color: #1c1b1b6d;
+    background-color: #1c1b1bae;
     border-radius: 10px;
     -webkit-border-radius: 10px;
     -moz-border-radius: 10px;
@@ -184,24 +189,13 @@
     width: 90%;
     height: 150px;
     border-radius: 10px;
-    background-image: linear-gradient(to left, #1B0CF6, #0B34D4, #006DEB, #0B9DD4, #0CF4F6);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    padding: 20px 40px;
+    background-color: rgba(255, 255, 255, 0.1);
     -webkit-border-radius: 10px;
     -moz-border-radius: 10px;
     -ms-border-radius: 10px;
     -o-border-radius: 10px;
-    padding: 2px;
-}
-.l-github .c-github-content
-{
-    padding: 10px;
-    width: 100%;
-    height: 100%;
-    background-color: #18191a;
-    border-radius: 8px;
-    -webkit-border-radius: 8px;
-    -moz-border-radius: 8px;
-    -ms-border-radius: 8px;
-    -o-border-radius: 8px;
 }
 .l-github .c-github-wrapper
 {
@@ -367,7 +361,7 @@
     {
         width: 90%;
         height: 100px;
-        padding: 2px;
+        padding: 8px 15px;
     }
     .l-github .c-github-image
     {

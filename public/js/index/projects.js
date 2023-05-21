@@ -1,6 +1,6 @@
 'use strict'
 
-const slideWrapper = document.querySelector('.c-slide-wrapper');
+const slideWrapper = document.querySelector('.l-slide-wrapper');
 const slideList = document.querySelector('.c-slide-list');
 const slideCards = document.querySelectorAll('.c-slide-card');
 const nextBtn = document.querySelector('.c-slide-btn.c-slide-next');
@@ -9,6 +9,7 @@ const slidePagination = document.querySelector('.c-slide-pagination');
 let paginationBtns;
 let isLeave = false;
 let isMobile = false;
+let isTouch = (('ontouchstart' in window) || (navigator.msMaxTouchPoints > 0));
 
 const state = 
 {
@@ -49,9 +50,7 @@ function setChevronVisibility()
 function getCenterPosition({index})
 {
     const card = slideCards[index];
-    const cardWidth = card.clientWidth;
-    const windowWidth = document.body.clientWidth;
-    const margin = (windowWidth - cardWidth)/2;
+    const margin = (slideWrapper.clientWidth - card.clientWidth)/2;
     const position = margin - (index * cardWidth);
     return position;
 };
@@ -214,7 +213,7 @@ function setListeners()
     });
     slideCards.forEach((card, index) =>
     {
-        if(!/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) 
+        if(!isTouch) 
         {
 
             card.addEventListener('dragstart', (event) =>
@@ -250,6 +249,7 @@ function initSlider()
 
 function githubCard()
 {
+    const githubCard = document.querySelector('.l-github');
     let repo = [];
 
     fetch('https://api.github.com/users/caio-couto/repos')
@@ -258,6 +258,10 @@ function githubCard()
     {
         repo = data;
         populateCard(getLatestProject(repo));
+    })
+    .catch(() =>
+    {
+        githubCard.style.display = 'none';
     });
 
     function getLatestProject(repository)

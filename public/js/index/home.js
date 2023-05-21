@@ -69,7 +69,14 @@ class code
 }
 
 const codeHtml = document.getElementById('code');
+const skipButton = document.querySelector('.c-code-skip');
 
-const wello = new code(codeHtml);
+const hello = new code(codeHtml);
 
-wello.typeSentense();
+skipButton.addEventListener('click', () =>
+{
+    hello.typingSpeed = 0;
+    hello.typingBreaks = 0;
+});
+
+hello.typeSentense();
