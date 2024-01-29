@@ -31,7 +31,7 @@
 }
 .titleBrackets-brackets
 {
-    background-image: linear-gradient(to bottom, #1B0CF6, #0B34D4, #006DEB, #0B9DD4, #0CF4F6);
+    background-image: linear-gradient(to bottom, #1B0CF6, #0B34D4, #006DEB, #0B9DD4, #0CF4F6, #0CF4F6, #0CF4F6);
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -95,13 +95,14 @@
 {
     font-size: 90px;
 }
-.skills-grid-item:last-of-type .bx
+.skills-grid-item:last-of-type i
 {
     margin-bottom: 20px;
 }
-.skills-grid-item > .bx
+.skills-grid-item > i
 {
     font-size: 90px;
+    margin-bottom: 10px;
 }
 .grid-item-description
 {

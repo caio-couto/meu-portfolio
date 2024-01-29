@@ -6,6 +6,7 @@ const slideCards = document.querySelectorAll('.c-slide-card');
 const nextBtn = document.querySelector('.c-slide-btn.c-slide-next');
 const prevBtn = document.querySelector('.c-slide-btn.c-slide-prev');
 const slidePagination = document.querySelector('.c-slide-pagination');
+const mobile = document.querySelector('.c-slide-mobile');
 let paginationBtns;
 let isLeave = false;
 let isMobile = false;
@@ -80,11 +81,35 @@ function setVisibleSlide({index})
 function nextSlide()
 {
     setVisibleSlide({index: state.currentSlideIndex + 1});
+    mobileDescription({index: state.currentSlideIndex})
 };
+
+function mobileDescription({index})
+{
+    if (isMobile)
+    {
+        const text = mobile.getElementsByTagName('p')[0];
+        const description = slideCards[index].getElementsByTagName('p')[0].innerHTML;
+        const more = mobile.getElementsByTagName('i')[0];
+
+        text.innerHTML = description;
+
+        if (description.length < 150)
+        {
+            more.style.display = 'none';
+        }
+        else if (more.style.display == 'none' || description.length >= 150)
+        {
+            more.style.display = 'inline';
+        }
+    }
+}
 
 function prevSlide()
 {
     setVisibleSlide({index: state.currentSlideIndex - 1});
+    mobileDescription({index: state.currentSlideIndex})
+
 };
 
 function createPaginationBtn()
@@ -238,6 +263,23 @@ function setListeners()
             card.addEventListener('touchend', onTouchEnd);
         }
     });
+
+    const more = mobile.getElementsByTagName('i')[0];
+    const text = mobile.getElementsByTagName('p')[0];
+    more.addEventListener('click', () =>
+    {
+        if (text.style.display != 'inline')
+        {
+            text.style.display = 'inline';
+            more.innerText = 'mostrar menos'
+        }
+        else
+        {
+            text.style.display = '-webkit-box';
+            more.innerText = 'mostrar mais'
+        }
+    });
+
     nextBtn.addEventListener('click', nextSlide);
     prevBtn.addEventListener('click', prevSlide);
 }
@@ -247,6 +289,7 @@ function initSlider()
     createPaginationBtn();
     setListeners();
     setVisibleSlide({index: 0});
+    mobileDescription({index: 0});
 }
 
 function githubCard()

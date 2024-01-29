@@ -39,7 +39,7 @@
 }
 .contact-list-item:last-of-type
 {
-    border-top: 1px solid rgba(216, 216, 216, 0.734);
+    border-top: 2px solid rgba(255, 255, 255, 0.2);
 }
 .contact-list-item
 {

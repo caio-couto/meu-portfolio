@@ -94,6 +94,7 @@
     position: absolute;
     width: 100%;
     height: 100%;
+    margin-bottom: 5px;
     bottom: 0px;
     border-radius: 0px 0px 10px 10px;
     color: white;
@@ -181,6 +182,10 @@
 .c-slide-pagination-btn.c-slide-pagination-btn--active
 {
     color: #0B9DD4;
+}
+.c-slide-mobile
+{
+    display: none;   
 }
 .l-github
 {
@@ -317,13 +322,29 @@
         -ms-border-radius: 0px;
         -o-border-radius: 0px;
     }
+    .c-slide-mobile
+    {
+        display: inline;
+        margin: 0px 20px;
+    }
+    .c-slide-mobile p 
+    {
+        overflow: hidden;
+        width:100%;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+    }
+    .c-slide-mobile i
+    {
+        color: #0B9DD4;
+        font-weight: 800;
+        font-style: normal;
+        cursor: pointer;
+    }
     .c-slide-description
     {
-        border-radius: 0px;
-        -webkit-border-radius: 0px;
-        -moz-border-radius: 0px;
-        -ms-border-radius: 0px;
-        -o-border-radius: 0px;
+        display: none;
     }
     .c-slide-title
     {
@@ -346,9 +367,9 @@
         display: none;
     }
     .c-slide-card:not(.active) .c-slide-content
-{
-    transform: scale(1);
-}
+    {
+        transform: scale(1);
+    }
     .c-slide-pagination
     {
         margin: 0 auto auto;
@@ -360,7 +381,7 @@
     .l-github
     {
         width: 90%;
-        height: 100px;
+        height: 110px;
         padding: 8px 15px;
     }
     .l-github .c-github-image
@@ -387,6 +408,6 @@
     }
     .l-github .c-github-description
     {
-        font-size: 10px;
+        font-size: 14px;
     }
 }

@@ -35,7 +35,7 @@
     width: 200px;
     height: 200px;
     border-radius: 50%;
-    outline: 1px solid white;
+    outline: 2px solid rgba(255, 255, 255, 0.2);
     margin-top: 20px;
     margin-bottom: 30px;
     -webkit-border-radius: 50%;
@@ -50,7 +50,7 @@
 }
 .body-text
 {
-    text-align: justify;
+    text-align: left;
     color: #ffff;
     width: calc(100% - 250px);
     width: 100%;
@@ -63,6 +63,7 @@
     height: 50px;
     color: white;
     background-image: linear-gradient(to left, #1B0CF6, #0B34D4, #006DEB, #0B9DD4, #0CF4F6);
+    outline: 2px solid rgba(255, 255, 255, 0.2);
     margin: 20px auto;
     display: flex;
     align-items: center;
